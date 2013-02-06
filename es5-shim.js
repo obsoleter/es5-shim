@@ -34,6 +34,20 @@
 
 function Empty() {}
 
+// Added missing errors in Rhino 1.6R4
+if (!this.TypeError) {
+    this.TypeError = function TypeError(name) {
+        this.name = name;
+    }
+}
+
+// Added missing errors in Rhino 1.6R4
+if (!this.RangeError) {
+    this.RangeError = function RangeError(name) {
+        this.name = name;
+    }
+}
+
 if (!Function.prototype.bind) {
     Function.prototype.bind = function bind(that) { // .length is 1
         // 1. Let Target be the this value.
@@ -979,3 +993,4 @@ var toObject = function (o) {
 };
 
 });
+
